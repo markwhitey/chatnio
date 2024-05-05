@@ -11,7 +11,6 @@ import { Menu } from "lucide-react";
 import { useEffect } from "react";
 import { tokenField } from "@/conf/bootstrap.ts";
 import { toggleMenu } from "@/store/menu.ts";
-import ProjectLink from "@/components/ProjectLink.tsx";
 import ModeToggle from "@/components/ThemeProvider.tsx";
 import router from "@/router.tsx";
 import MenuBar from "./MenuBar.tsx";
@@ -40,7 +39,7 @@ function NavBar() {
   const dispatch = useDispatch();
   useEffect(() => {
     validateToken(dispatch, getMemory(tokenField));
-  }, []);
+  });
   const auth = useSelector(selectAuthenticated);
 
   return (
@@ -60,7 +59,6 @@ function NavBar() {
           onClick={() => router.navigate("/")}
         />
         <div className={`grow`} />
-        <ProjectLink />
         <Announcement />
         <ModeToggle />
         {auth ? (
